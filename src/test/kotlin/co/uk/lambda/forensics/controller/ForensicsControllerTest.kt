@@ -24,7 +24,6 @@ class ForensicsControllerTest{
 
         val response = controller.getDirections(email)
         Assert.assertEquals(HttpStatus.OK, response.statusCode)
-        Assert.assertEquals("OK", response.body.message)
     }
 
     @Test
@@ -37,6 +36,5 @@ class ForensicsControllerTest{
 
         val response = controller.getLocation(email, 100.10, 200.20)
         Assert.assertEquals(HttpStatus.OK, response.statusCode)
-        Assert.assertEquals("OK", response.body.message)
     }
 }
