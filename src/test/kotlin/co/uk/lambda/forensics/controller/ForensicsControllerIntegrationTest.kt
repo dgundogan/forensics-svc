@@ -19,6 +19,8 @@ class ForensicsControllerIntegrationTest{
     @Autowired
     lateinit var mockMvc: MockMvc
 
+    private val email = "test@test.com"
+
     @Test
     fun `Given invalid email, the direction api returns Bad Request`() {
 
@@ -31,7 +33,7 @@ class ForensicsControllerIntegrationTest{
     @Test
     fun `Given valid email, the direction api returns OK`() {
 
-        mockMvc.perform(get("/api/{email}/directions", "test@test.com")
+        mockMvc.perform(get("/api/{email}/directions", email)
             .contentType(MediaType.APPLICATION_JSON_UTF8))
             .andExpect(status().isOk)
 
@@ -49,7 +51,7 @@ class ForensicsControllerIntegrationTest{
     @Test
     fun `Given valid email and invalid X coordinate, the location api returns Bad Request`() {
 
-        mockMvc.perform(get("/api/{email}/location/{x}/{y}", "test@test.com","abc",100)
+        mockMvc.perform(get("/api/{email}/location/{x}/{y}", email,"abc",100)
             .contentType(MediaType.APPLICATION_JSON_UTF8))
             .andExpect(status().isBadRequest)
 
@@ -58,7 +60,7 @@ class ForensicsControllerIntegrationTest{
     @Test
     fun `Given valid email and invalid Y coordinate, the location api returns Bad Request`() {
 
-        mockMvc.perform(get("/api/{email}/location/{x}/{y}", "test@test.com",100,"xyz")
+        mockMvc.perform(get("/api/{email}/location/{x}/{y}", email ,100,"xyz")
             .contentType(MediaType.APPLICATION_JSON_UTF8))
             .andExpect(status().isBadRequest)
 
@@ -67,7 +69,7 @@ class ForensicsControllerIntegrationTest{
     @Test
     fun `Given valid email and invalid coordinates, the location api returns Bad Request`() {
 
-        mockMvc.perform(get("/api/{email}/location/{x}/{y}", "test@test.com","abc","xyz")
+        mockMvc.perform(get("/api/{email}/location/{x}/{y}", email,"abc","xyz")
             .contentType(MediaType.APPLICATION_JSON_UTF8))
             .andExpect(status().isBadRequest)
 
