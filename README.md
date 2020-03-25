@@ -65,8 +65,11 @@ http://localhost:8080/api/test@domain.com/directions
 
 
 Example:
-http://localhost:8080/api/test@domain.com/100/100
+http://localhost:8080/api/test@domain.com/location/100/100
 
+
+### Direction setup
+You can set up the direction in application.yml
 
 ### Response
 
